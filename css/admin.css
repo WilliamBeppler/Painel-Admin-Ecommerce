@@ -1,0 +1,258 @@
+/* Mesmas cores da loja (styles/style.css) */
+:root {
+    --cor-primaria: #10316b;
+    --cor-destaque: #f58800;
+    --cor-destaque-hover: #e07b00;
+    --cor-fundo: #eef3f8;
+    --cor-cartao: #ffffff;
+    --cor-texto: #333333;
+    --cor-suave: #666666;
+    --cor-borda: #d9e1ea;
+    --cor-sucesso: #1e7b3c;
+    --cor-erro: #c62828;
+    --raio: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.5;
+}
+
+/* Esconde o painel até o /me confirmar que é ADMIN */
+body.verificando .conteudo,
+body.verificando .topo-usuario { visibility: hidden; }
+
+/* ---------- TOPO ---------- */
+.topo { background-color: var(--cor-primaria); color: #fff; }
+
+.topo-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.topo-marca { font-size: 0.85rem; opacity: 0.8; }
+.topo h1 { font-size: 1.3rem; }
+
+.topo-usuario { display: flex; align-items: center; gap: 12px; }
+
+/* ---------- LAYOUT ---------- */
+.conteudo {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bloco {
+    background-color: var(--cor-cartao);
+    border-radius: var(--raio);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(16, 49, 107, 0.08);
+}
+
+.bloco h2 { font-size: 1.15rem; color: var(--cor-primaria); margin-bottom: 16px; }
+
+.bloco-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.resumo { color: var(--cor-suave); font-size: 0.9rem; }
+
+/* ---------- CAMPOS ---------- */
+.campo { display: flex; flex-direction: column; gap: 4px; }
+
+label { font-size: 0.85rem; font-weight: 600; color: var(--cor-suave); }
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus { outline: 2px solid var(--cor-destaque); border-color: transparent; }
+
+.form-produto {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 14px;
+    align-items: end;
+}
+
+.campo-largo { grid-column: 1 / -1; }
+
+.previa {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+}
+
+.form-acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ---------- BOTÕES ---------- */
+.botao {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    min-height: 42px; /* área de toque confortável no celular */
+}
+
+.botao:disabled { opacity: 0.6; cursor: wait; }
+
+.botao-principal { background-color: var(--cor-destaque); color: #fff; }
+.botao-principal:hover:not(:disabled) { background-color: var(--cor-destaque-hover); }
+
+.botao-secundario { background-color: var(--cor-primaria); color: #fff; }
+.botao-secundario:hover:not(:disabled) { opacity: 0.9; }
+
+.botao-perigo { background-color: #fee2e2; color: var(--cor-erro); }
+.botao-perigo:hover:not(:disabled) { background-color: #fca5a5; }
+
+.botao-claro { background-color: rgba(255, 255, 255, 0.15); color: #fff; }
+.botao-claro:hover { background-color: rgba(255, 255, 255, 0.25); }
+
+/* ---------- MENSAGENS ---------- */
+.mensagem { font-size: 0.9rem; color: var(--cor-suave); }
+.mensagem:empty { display: none; }
+.mensagem-sucesso { color: var(--cor-sucesso); font-weight: 600; }
+.mensagem-erro { color: var(--cor-erro); font-weight: 600; }
+
+#mensagem-lista { margin-bottom: 12px; }
+
+/* ---------- LISTA DE PRODUTOS ---------- */
+.lista-produtos { display: flex; flex-direction: column; gap: 14px; }
+
+.produto {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.produto-inativo { background-color: #f6f7f9; }
+.produto-inativo .produto-miniatura { filter: grayscale(1); opacity: 0.6; }
+
+.produto-miniatura {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+}
+
+.produto-corpo { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+.produto-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.produto-cabecalho h3 {
+    font-size: 1.05rem;
+    color: var(--cor-primaria);
+    overflow-wrap: anywhere;
+}
+
+.produto-preco { margin-left: auto; font-weight: 700; }
+
+.status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.status-ativo { background-color: #dcfce7; color: var(--cor-sucesso); }
+.status-inativo { background-color: #e5e7eb; color: var(--cor-suave); }
+
+.produto-campos {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+}
+
+.produto-acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ---------- LOGIN ---------- */
+.pagina-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: var(--cor-primaria);
+}
+
+.login-cartao {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--cor-cartao);
+    border-radius: var(--raio);
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.login-marca { color: var(--cor-destaque); font-weight: 700; font-size: 0.9rem; }
+.login-cartao h1 { font-size: 1.3rem; color: var(--cor-primaria); margin-bottom: 20px; }
+
+.login-cartao form { display: flex; flex-direction: column; gap: 8px; }
+.login-cartao input { margin-bottom: 8px; }
+.login-cartao .botao { margin-top: 8px; width: 100%; }
+.login-cartao .mensagem { margin-top: 14px; }
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 640px) {
+    .topo h1 { font-size: 1.1rem; }
+
+    .form-produto,
+    .produto-campos { grid-template-columns: 1fr; }
+
+    .produto { grid-template-columns: 1fr; }
+
+    .produto-miniatura { width: 100%; height: 180px; }
+
+    .produto-preco { margin-left: 0; }
+
+    .produto-acoes .botao,
+    .form-acoes .botao { flex: 1 1 auto; }
+}

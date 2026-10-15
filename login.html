@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Painel Pedacinho do Céu</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="pagina-login">
+    <main class="login-cartao">
+        <p class="login-marca">Pedacinho do Céu</p>
+        <h1>Painel de administração</h1>
+
+        <form id="form-login" novalidate>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" autocomplete="username" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" autocomplete="current-password" required>
+
+            <button type="submit" class="botao botao-principal" id="btn-entrar">Entrar</button>
+        </form>
+
+        <p id="mensagem" class="mensagem" role="alert"></p>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

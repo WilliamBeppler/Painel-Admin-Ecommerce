@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Pedacinho do Céu</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<!-- "verificando": esconde o painel até o /me confirmar que é ADMIN -->
+<body class="verificando">
+    <header class="topo">
+        <div class="topo-conteudo">
+            <div>
+                <p class="topo-marca">Pedacinho do Céu</p>
+                <h1>Painel de administração</h1>
+            </div>
+            <div class="topo-usuario">
+                <span id="nome-admin"></span>
+                <button type="button" class="botao botao-claro" id="btn-sair">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <section class="bloco">
+            <h2>Cadastrar produto</h2>
+            <form id="form-cadastro" class="form-produto" novalidate>
+                <div class="campo">
+                    <label for="novo-nome">Nome</label>
+                    <input type="text" id="novo-nome" maxlength="100" required>
+                </div>
+                <div class="campo">
+                    <label for="novo-preco">Preço (R$)</label>
+                    <input type="number" id="novo-preco" min="0.01" step="0.01" inputmode="decimal" required>
+                </div>
+                <div class="campo campo-largo">
+                    <label for="novo-imagem">Imagem (https://... ou ../imgs/arquivo.jpeg)</label>
+                    <input type="text" id="novo-imagem" maxlength="255" required>
+                </div>
+                <img id="novo-previa" class="previa" alt="Prévia da imagem" hidden>
+                <div class="form-acoes">
+                    <button type="submit" class="botao botao-principal" id="btn-cadastrar">Cadastrar</button>
+                    <p id="mensagem-cadastro" class="mensagem" role="status"></p>
+                </div>
+            </form>
+        </section>
+
+        <section class="bloco">
+            <div class="bloco-titulo">
+                <h2>Produtos</h2>
+                <p id="resumo-produtos" class="resumo"></p>
+            </div>
+            <p id="mensagem-lista" class="mensagem" role="status"></p>
+            <div id="lista-produtos" class="lista-produtos"></div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/painel.js"></script>
+</body>
+</html>
